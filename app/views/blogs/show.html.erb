@@ -1,0 +1,31 @@
+<div class="container">
+	<h1>Blogs</h1>
+</div>
+
+<div class="row">
+	<div class="col s3"></div>
+	<div class="col s6">
+		<form>
+			<div class="new_blog_form">
+				<label> <h5>Enter any text: </h5> </label>
+				<input type="text" name="" id="input_field" data-value="blog_speaker">
+			</div>	
+		</form>
+	</div>
+</div>
+
+<div class="row container">
+	<ul class="blogs_list">
+		<% @messages.each do |message| %>
+			<%= render partial: 'blog', locals: { message: message.context } %>
+		<% end %>
+	</ul>
+</div>
+
+<script type="text/javascript">
+	$('#input_field').on('keypress', function(e) {
+		if (e.keyCode == 13){
+			M.toast({ html: 'Congrats! new blog posted', classes: 'rounded' })
+		}
+	})
+</script>
